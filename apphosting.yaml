@@ -1,0 +1,30 @@
+# Settings for Cloud Run
+runConfig:
+
+  # Number of containers to always keep alive (default 0).
+  # Min instance containers cost money when idle, but at a discounted rate.
+  minInstances: 2
+ 
+# Maximum number of containers to ever run at a time (default of 100 and managed by quota)
+  maxInstances: 100
+
+  # Maximum number of requests that each serving instance can receive (default 80).
+  # Can be increased using any integer value up to 1000.
+  # If CPU is less than 1, concurrency must be set to 1.
+  concurrency: 100
+
+# Number of CPUs used for each serving instance.
+# By default, CPU defaults to 1.0
+# CPU can be set to the value 1, 2, 4, 6, or 8 or any value from 0.08 to 1 in increments of 0.01.
+# If you set a value less than 1 CPU, you must set concurrency to 1 and CPU will only be allocated during
+# request processing.
+  cpu: 2
+
+  # Amount of memory allocated for each serving instance in MiB (default 512).
+  # Can be set to any integer value between 128 to 32768.
+  # Increasing memory limit may require increasing CPU limits.
+  # Over 4GiB requires at least 2 CPUs
+  # Over 8GiB requires at least 4 CPUs
+  # Over 16GiB requires at least 6 CPUs
+  # Over 24GiB requires at least 8 CPUs 
+  memoryMiB: 1024
